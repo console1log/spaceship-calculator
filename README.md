@@ -71,3 +71,4 @@ Seeds located in `/src/providers/seeders`
 ## API documentation
 
 You can check swagger documentation on [Documentation](http://localhost:3000/documentation) after launch this app
+Also you can check [Postman collection](https://www.postman.com/supply-physicist-55222749/workspace/publicworkspace/collection/20486438-ac50aaca-cb90-4a09-a3dc-76bcb316c0eb?action=share&creator=20486438)
