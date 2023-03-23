@@ -1,17 +1,20 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty, IsNumber } from 'class-validator'
 import { Expose, Transform, TransformFnParams } from 'class-transformer'
+import { ONE_MILLION, ONE_TON } from '../../../utils/constants'
 
 export class GetVesselConfigsRequestDto {
   @ApiProperty({
     type: 'number',
     description: 'Max price of vessel',
-    example: 100,
+    example: 100_000_000,
     name: 'max_price',
   })
   @Expose({ name: 'max_price' })
   @IsNotEmpty()
-  @Transform(({ value }: TransformFnParams): number => Number(value))
+  @Transform(
+    ({ value }: TransformFnParams): number => Number(value) / ONE_MILLION
+  )
   @IsNumber()
   maxPrice: number
 
@@ -30,12 +33,12 @@ export class GetVesselConfigsRequestDto {
   @ApiProperty({
     type: 'number',
     description: 'Max weight of vessel',
-    example: 50,
+    example: 50_000,
     name: 'max_weight',
   })
   @Expose({ name: 'max_weight' })
   @IsNotEmpty()
-  @Transform(({ value }: TransformFnParams): number => Number(value))
+  @Transform(({ value }: TransformFnParams): number => Number(value) / ONE_TON)
   @IsNumber()
   maxWeight: number
 }
